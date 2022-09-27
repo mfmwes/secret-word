@@ -1,8 +1,15 @@
 
 .end p {
     font-size: 7.5em;
+    font-weight: 900;
+    -webkit-text-stroke-color: #f8f4e4;
+    -webkit-text-stroke-width: 1.5px;
 }
 
+.end span {
+    font-weight: 500;
+    font-size: 3.5em;
+}
 
 .end button {
     display: inline-block;

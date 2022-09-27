@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { useState,useRef } from 'react'
 import './GameScreen.css'
 
 
 const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLetters,wrongLetters,guesses,score}) => {
-  const [letter, setLetter] = useState('')
+  const [letter, setLetter] = useState('');
+  const letterInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     verifyLetter(letter);
+    setLetter('');
+    letterInputRef.current.focus();
   } 
   return (
     <div className='game'>
@@ -22,7 +25,7 @@ const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLette
       <div className='word-container'>
        {letters.map((letter, index) =>(
         guessedLetters.includes(letter) ? (
-          <span key={index} className="letter"></span>
+          <span key={index} className="letter">{letter.toUpperCase()}</span>
         ):(
           <span key={index} className="blank-square"></span>
         )
@@ -30,14 +33,18 @@ const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLette
       </div>
       <div className='letter-container'>
         <form onSubmit={handleSubmit}>
-          <input type="text" maxLength={1} required onChange={(e)=> setLetter(e.target.value)} value={letter}/>
+          <input type="text" maxLength={1} 
+          required 
+          onChange={(e)=> setLetter(e.target.value)} 
+          value={letter} 
+          ref={letterInputRef}/>
           <button>Jogar !!!</button>
         </form>   
       </div>
       <div className="wrong-letters-container">
         <p>
-          Letras já utilizadas:{wrongLetters.map((letter,index) =>(
-            <span key={index}>{letter}</span>
+          Letras já utilizadas: {wrongLetters.map((letter,index) =>(
+            <span key={index}>{letter.toUpperCase()}, </span>
           ))}         
         </p>   
       </div>
@@ -45,4 +52,4 @@ const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLette
   )
 }
 
-export default GameScreen
+export default GameScreen;

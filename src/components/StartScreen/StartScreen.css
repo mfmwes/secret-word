@@ -4,8 +4,10 @@
 }
 
 .start h1 {
-    font-size: 6.5em;
+    font-size: 8.5em;
     color: #000;
+    -webkit-text-stroke-color: #f8f4e4;
+    -webkit-text-stroke-width: 1.5px;
 }
 
 .start p {

@@ -6,19 +6,19 @@ import StartScreen from './components/StartScreen/StartScreen';
 import GameScreen from './components/GameScreen/GameScreen';
 import EndScreen from './components/EndScreen/EndScreen';
 //data
-import {wordsList} from './data/words'
+import {wordsList} from './data/words';
 
 const stages = [
   {id:1, name:'start'},
   {id:2, name:'game'},
   {id:3, name:'gameover'}
-]
+];
 
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
   const [words] = useState(wordsList);
   const [pickedWord,setWord] = useState('');
-  const[pickedCategory, setCategory] = useState('');
+  const [pickedCategory, setCategory] = useState('');
   const [letters , setLetters] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
@@ -35,7 +35,7 @@ function App() {
     const pickedWord = words[category][Math.floor(Math.random() * words[category].length)]
     
     return {pickedWord,category}
-  }
+  };
  
   // start the game
   const startGame = () => {
@@ -50,16 +50,44 @@ function App() {
 
   // in game letter verification
   const verifyLetter = (letter) => {
-    console.log(letter)
-  }
+    const normalizedLetter = letter.toLowerCase()
+    if (guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)){
+      return
+    };
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) =>[...actualGuessedLetters, normalizedLetter])
+    } else {
+      setWrongLetters((actualWrongLetters) =>[...actualWrongLetters,normalizedLetter]) 
+     };
+     setGuesses((actualGuesses) => actualGuesses - 1);
+    };
+
+    const ClearStates = () => {
+      setGuessedLetters([]);
+      setWrongLetters([]);
+      setGuesses(5);
+      setScore(0);
+    }
+    
+    useEffect(() => {
+      if (guesses <=0) {
+        setGameStage(stages[2].name)   
+        ClearStates()   
+      }
+     },[guesses])
+
+  
   //restart the game
   const restartGame = () => {
     setGameStage(stages[1].name)
-  }
+    ClearStates()
+   
+  };
   //home screen button function
   const homeScreen = () => {
     setGameStage(stages[0].name)
-  }
+    ClearStates()
+  };
    
   return (
     <div className="App">
@@ -73,7 +101,7 @@ function App() {
         guesses={guesses}
         score={score}/>}
       
-      {gameStage === 'gameover' && <EndScreen restartGame={restartGame} homeScreen={homeScreen} />}
+      {gameStage === 'gameover' && <EndScreen restartGame={restartGame} homeScreen={homeScreen} score={score} />}
     </div>
   );
 }
