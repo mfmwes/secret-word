@@ -39,6 +39,7 @@ function App() {
  
   // start the game
   const startGame = () => {
+    ClearLetterStates();
   const {pickedWord,category} = pickWordAndCategory();
     setGameStage(stages[1].name)
     let wordLetters = pickedWord.split('')
@@ -55,38 +56,65 @@ function App() {
       return
     };
     if (letters.includes(normalizedLetter)) {
-      setGuessedLetters((actualGuessedLetters) =>[...actualGuessedLetters, normalizedLetter])
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        letter,
+      ]);
     } else {
-      setWrongLetters((actualWrongLetters) =>[...actualWrongLetters,normalizedLetter]) 
-     };
-     setGuesses((actualGuesses) => actualGuesses - 1);
-    };
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter,
+      ]);
 
-    const ClearStates = () => {
+      setGuesses((actualGuesses) => actualGuesses - 1);
+    }
+  };
+
+  // reset states
+
+  const ClearStates = () =>{
+    setScore(0);
+  }
+
+
+    const ClearLetterStates = () => {
       setGuessedLetters([]);
       setWrongLetters([]);
-      setGuesses(5);
-      setScore(0);
+     
     }
     
     useEffect(() => {
       if (guesses <=0) {
         setGameStage(stages[2].name)   
-        ClearStates()   
       }
      },[guesses])
+    
+     //score 
+     useEffect(() => {
+        const uniqueLetters = [...new Set(letters)]
+        
+        if (guessedLetters.length === uniqueLetters.length){
+          setScore((actualScore)=> actualScore = actualScore+100)
+          startGame()
+        }
+        
+     },[guessedLetters])
 
   
   //restart the game
   const restartGame = () => {
     setGameStage(stages[1].name)
     ClearStates()
+    ClearLetterStates()
+    setGuesses(5)
    
   };
   //home screen button function
   const homeScreen = () => {
     setGameStage(stages[0].name)
+    ClearLetterStates()
     ClearStates()
+    setGuesses(5)
   };
    
   return (
