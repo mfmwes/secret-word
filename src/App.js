@@ -37,11 +37,15 @@ function App() {
     return {pickedWord,category}
   };
  
-  // start the game
   const startGame = () => {
+    setGameStage(stages[1].name)
+    ClearScore()
+  };
+
+  // new word
+  const newWord = () => {
     ClearLetterStates();
   const {pickedWord,category} = pickWordAndCategory();
-    setGameStage(stages[1].name)
     let wordLetters = pickedWord.split('')
     let tratedWord = wordLetters.map((l) => l.toLowerCase())
       setCategory(category)
@@ -65,46 +69,47 @@ function App() {
         ...actualWrongLetters,
         normalizedLetter,
       ]);
-
       setGuesses((actualGuesses) => actualGuesses - 1);
     }
   };
 
   // reset states
 
-  const ClearStates = () =>{
+  const ClearScore = () =>{
     setScore(0);
   }
 
 
-    const ClearLetterStates = () => {
-      setGuessedLetters([]);
-      setWrongLetters([]);
-     
-    }
+  const ClearLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);    
+  }
     
     useEffect(() => {
-      if (guesses <=0) {
-        setGameStage(stages[2].name)   
+      if (guesses === 0) {
+        ClearLetterStates();
+        setGameStage(stages[2].name)  
       }
      },[guesses])
     
      //score 
      useEffect(() => {
         const uniqueLetters = [...new Set(letters)]
+        if (guessedLetters.length === uniqueLetters.length) {
+          newWord()
+          // add score
+          setScore((actualScore) => (actualScore += 100));
+    
+          // restart game with new word
         
-        if (guessedLetters.length === uniqueLetters.length){
-          setScore((actualScore)=> actualScore = actualScore+100)
-          startGame()
         }
-        
-     },[guessedLetters])
+      }, [guessedLetters]);
 
   
   //restart the game
   const restartGame = () => {
     setGameStage(stages[1].name)
-    ClearStates()
+    ClearScore()
     ClearLetterStates()
     setGuesses(5)
    
@@ -113,7 +118,7 @@ function App() {
   const homeScreen = () => {
     setGameStage(stages[0].name)
     ClearLetterStates()
-    ClearStates()
+    ClearScore()
     setGuesses(5)
   };
    
