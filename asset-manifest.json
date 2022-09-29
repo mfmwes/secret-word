@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/secret-word/static/css/main.9863579f.css",
-    "main.js": "/secret-word/static/js/main.c3a3c470.js",
+    "main.css": "/secret-word/static/css/main.0779196c.css",
+    "main.js": "/secret-word/static/js/main.3fc740ba.js",
     "static/js/787.e4ce4824.chunk.js": "/secret-word/static/js/787.e4ce4824.chunk.js",
+    "static/media/GAMERIA.ttf": "/secret-word/static/media/GAMERIA.41c7009364c5cf6a045f.ttf",
     "index.html": "/secret-word/index.html",
-    "main.9863579f.css.map": "/secret-word/static/css/main.9863579f.css.map",
-    "main.c3a3c470.js.map": "/secret-word/static/js/main.c3a3c470.js.map",
+    "main.0779196c.css.map": "/secret-word/static/css/main.0779196c.css.map",
+    "main.3fc740ba.js.map": "/secret-word/static/js/main.3fc740ba.js.map",
     "787.e4ce4824.chunk.js.map": "/secret-word/static/js/787.e4ce4824.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9863579f.css",
-    "static/js/main.c3a3c470.js"
+    "static/css/main.0779196c.css",
+    "static/js/main.3fc740ba.js"
   ]
 }
