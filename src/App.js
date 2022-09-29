@@ -105,8 +105,7 @@ function App() {
         
         }
       }, [guessedLetters]);
-
-  
+ 
   //restart the game
   const restartGame = () => {
     setGameStage(stages[1].name)

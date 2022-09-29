@@ -41,7 +41,7 @@ const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLette
           onChange={(e)=> setLetter(e.target.value)} 
           value={letter} 
           ref={letterInputRef}/>
-          <button>Jogar</button>
+          <button className='play'>Jogar</button>
         </form>   
       </div>
       <div className="wrong-letters-container">

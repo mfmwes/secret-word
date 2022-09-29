@@ -1,5 +1,5 @@
 .game{
-    font-family: 'gameria';
+    font-family: 'gameria','helvetica';
     font-weight: 700;
 
 }
@@ -55,6 +55,7 @@ form {
 
 .letter, .blank-square{
     background-color: #f8f4e4;
+    font-family: 'Helvetica';
     font-size: 70px;
     line-height: 1.6;
     width: 100px;
@@ -94,6 +95,7 @@ form {
     width:80px ;
     border: 2px solid #000;
     margin-right: 0.5em;
+    text-transform: uppercase;
 
 }
 
@@ -109,4 +111,53 @@ form {
     font-size: 1.2em;
     font-weight: 700;
   
+}
+
+@media (max-width: 768px){
+   .game .points{
+    font-size: 1.5em;
+   }
+
+   .game h1 {
+    font-size: 2.3em;
+   }
+
+   .game .tip {
+    font-size: 1.5em;
+   }
+   
+  .game .tries{
+    font-size:1.5em
+  }
+
+  .letter, .blank-square{
+    background-color: #f8f4e4;
+    font-family: 'Helvetica';
+    font-size: 1.5em;
+    width: 35px;
+    height: 45px;
+    border:3px solid #000;   
+  }
+
+  .word-container {
+    width: fit-content
+  }
+  
+  .game button {
+    margin-top: 15%;
+  }
+
+  .game input {
+    font-size: 2em;
+    text-align: center;
+    width:60px;
+    height: 60px;
+    border: 2px solid #000;
+    margin-right: 0.5em;
+
+  }
+  
+  .wrong-letters-container p{
+    font-size: 1.2em;
+  }
 }

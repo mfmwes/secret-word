@@ -1,5 +1,5 @@
 .end {
-    font-family: 'gameria';
+    font-family: 'gameria','helvetica';
 }
 
 .end .game-over {
@@ -34,4 +34,18 @@
 
  .end button:hover {
     background-color:#ffd21dd9;
+}
+
+@media (max-width: 768px){
+    .end .game-over{
+        font-size: 4em;
+    }
+
+   .end .score {
+        font-size: 2.5em;
+    }
+
+    .end button {
+        margin-top: 10%;
+    }
 }
