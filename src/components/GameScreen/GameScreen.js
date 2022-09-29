@@ -18,9 +18,12 @@ const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLette
        <span className='points'> Pontuação:{score} </span>
       </p>
       <h1> Advinhe a palavra:</h1>
-      <h3 className='tip'>
-        Dica sobre a palavra:{pickedCategory}
-      </h3>
+      <div className="tip">
+        <h3>
+          Dica sobre a palavra:
+        </h3>
+        <h4 className='tip-word'>{pickedCategory}</h4>
+      </div>
       <p className='tries'>Você ainda tem {guesses} tentativas !!!</p>
       <div className='word-container'>
        {letters.map((letter, index) =>(
@@ -38,7 +41,7 @@ const GameScreen = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLette
           onChange={(e)=> setLetter(e.target.value)} 
           value={letter} 
           ref={letterInputRef}/>
-          <button>Jogar !!!</button>
+          <button>Jogar</button>
         </form>   
       </div>
       <div className="wrong-letters-container">

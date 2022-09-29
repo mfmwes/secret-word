@@ -1,5 +1,5 @@
 .start {
-    font-family: 'Helvetica';
+    font-family: gameria;
     font-weight: 900;
 }
 
@@ -13,9 +13,12 @@
 .start p {
     font-size: 3em;
     color:  #4e3f30;
+    -webkit-text-stroke-color: #f8f4e4;
+    -webkit-text-stroke-width: 1.5px;
 }
 
 .start button {
+    font-family: gameria;
     display: inline-block;
     border-radius: 62px;
     border-width: 2px;
@@ -23,8 +26,8 @@
     padding: 15px 55px;
     background-color: #f8f4e4;
     color: #000;
-    font-weight: 700;
-    font-size: 1.5em;
+    font-weight: 400;
+    font-size: 1.8em;
     text-transform: uppercase;
     cursor:pointer;
     transition: .4;

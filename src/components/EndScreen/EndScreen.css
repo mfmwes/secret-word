@@ -1,17 +1,23 @@
+.end {
+    font-family: 'gameria';
+}
 
-.end p {
-    font-size: 7.5em;
+.end .game-over {
+    font-size: 9.5em;
     font-weight: 900;
     -webkit-text-stroke-color: #f8f4e4;
     -webkit-text-stroke-width: 1.5px;
 }
 
-.end span {
+.end .score {
     font-weight: 500;
-    font-size: 3.5em;
+    font-size: 3em;
+    -webkit-text-stroke-color: #f8f4e4;
+    -webkit-text-stroke-width: 0.75px;
 }
 
 .end button {
+    font-family: 'gameria';
     display: inline-block;
     border-radius: 62px;
     border-width: 2px;
@@ -19,8 +25,7 @@
     padding: 15px 55px;
     background-color: #f8f4e4;
     color: #000;
-    font-weight: 700;
-    font-size: 1.5em;
+    font-size: 1.7em;
     text-transform: uppercase;
     cursor:pointer;
     transition: .4;
