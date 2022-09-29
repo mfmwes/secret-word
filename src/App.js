@@ -1,7 +1,7 @@
 //CSS
 import './App.css';
 //React
-import { useCallback,useEffect,useState } from 'react';
+import { useEffect,useState } from 'react';
 import StartScreen from './components/StartScreen/StartScreen';
 import GameScreen from './components/GameScreen/GameScreen';
 import EndScreen from './components/EndScreen/EndScreen';
@@ -97,6 +97,7 @@ function App() {
         const uniqueLetters = [...new Set(letters)]
         if (guessedLetters.length === uniqueLetters.length) {
           newWord()
+          setGuesses(5)
           // add score
           setScore((actualScore) => (actualScore += 100));
     
